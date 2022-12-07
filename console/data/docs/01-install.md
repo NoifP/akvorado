@@ -17,9 +17,10 @@ You can get *Akvorado* as a
 # docker run --rm ghcr.io/akvorado/akvorado:latest help
 ```
 
-Check the `docker-compose.yml` file for an example on how to deploy
-*Akvorado* using containers. If you want to use `docker-compose`, have
-a look at the [quick start procedure](00-intro#quick-start).
+Check the `docker-compose.yml` file for an example on how to deploy *Akvorado*
+using containers. If you want to use `docker-compose`, have a look at the [quick
+start procedure](00-intro#quick-start). This documentation assumes you are
+running the `docker-compose` setup.
 
 ## Pre-built binary
 
@@ -88,12 +89,12 @@ The following `make` targets are available:
 
 ## Upgrade
 
-Be sure to read the [changelog](99-changelog.md) before attempting an
-upgrade. Upgrade the orchestrator first. This will update the
-ClickHouse database. Then, upgrade all inlets. Then the console.
+Be sure to read the [changelog](99-changelog.md) before attempting an upgrade.
+Upgrade the orchestrator first. This will update the ClickHouse database if
+needed. Then, upgrade all inlets. Then the console.
 
-When using `docker-compose`, use the following commands to fetch an
-updated `docker-compose.yml` file:
+When using `docker-compose`, use the following commands to fetch an updated
+`docker-compose.yml` file and update your installation.
 
 ```console
 # cd akvorado
@@ -102,3 +103,7 @@ updated `docker-compose.yml` file:
 # docker-compose stop akvorado-orchestrator
 # docker-compose up -d
 ```
+
+Note that if Zookeeper or Kakfa gets upgraded in the process, this can be
+disruptive. Feel free to only use `docker-compose pull akvorado-orchestrator` to
+only update Akvorado image.
